@@ -16,20 +16,20 @@ func main() {
 		AttributeDefinitions: []*dynamodb.AttributeDefinition{ // Required
 			{ // Required
 				AttributeName: aws.String("name"), // Required
-				AttributeType: aws.String("S"),        // Required
+				AttributeType: aws.String("S"),    // Required
 			},
 			{ // Required
 				AttributeName: aws.String("id"), // Required
-				AttributeType: aws.String("S"),     // Required
+				AttributeType: aws.String("N"),  // Required
 			},
 		},
 		KeySchema: []*dynamodb.KeySchemaElement{ // Required
 			{ // Required
-				AttributeName: aws.String("id"), // Required
-				KeyType:       aws.String("HASH"),     // Required
+				AttributeName: aws.String("id"),   // Required
+				KeyType:       aws.String("HASH"), // Required
 
 			}, {
-				AttributeName: aws.String("name"), // Required
+				AttributeName: aws.String("name"),  // Required
 				KeyType:       aws.String("RANGE"), // Required
 			},
 		},
@@ -44,7 +44,7 @@ func main() {
 				KeySchema: []*dynamodb.KeySchemaElement{ // Required
 					{ // Required
 						AttributeName: aws.String("name"), // Required
-						KeyType:       aws.String("HASH"),  // Required
+						KeyType:       aws.String("HASH"), // Required
 					},
 				},
 				Projection: &dynamodb.Projection{ // Required

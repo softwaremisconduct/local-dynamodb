@@ -18,51 +18,19 @@ func main() {
 				AttributeName: aws.String("id"), // Required
 				AttributeType: aws.String("N"),  // Required
 			},
-			{ // Required
-				AttributeName: aws.String("user"), // Required
-				AttributeType: aws.String("S"),    // Required
-			},
 		},
 		KeySchema: []*dynamodb.KeySchemaElement{ // Required
 			{ // Required
 				AttributeName: aws.String("id"),   // Required
 				KeyType:       aws.String("HASH"), // Required
 
-			}, {
-				AttributeName: aws.String("user"),  // Required
-				KeyType:       aws.String("RANGE"), // Required
 			},
 		},
 		ProvisionedThroughput: &dynamodb.ProvisionedThroughput{ // Required
 			ReadCapacityUnits:  aws.Int64(1), // Required
 			WriteCapacityUnits: aws.Int64(1), // Required
 		},
-		TableName: aws.String("workout"), // Required
-		GlobalSecondaryIndexes: []*dynamodb.GlobalSecondaryIndex{
-			{ // Required
-				IndexName: aws.String("user"), // Required
-				KeySchema: []*dynamodb.KeySchemaElement{ // Required
-					{ // Required
-						AttributeName: aws.String("user"), // Required
-						KeyType:       aws.String("HASH"), // Required
-					},
-				},
-				Projection: &dynamodb.Projection{ // Required
-					NonKeyAttributes: []*string{
-						aws.String("user"),
-						aws.String("id"),
-						aws.String("equipment"),
-						aws.String("gym"),
-					},
-					ProjectionType: aws.String("INCLUDE"),
-				},
-				ProvisionedThroughput: &dynamodb.ProvisionedThroughput{ // Required
-					ReadCapacityUnits:  aws.Int64(1), // Required
-					WriteCapacityUnits: aws.Int64(1), // Required
-				},
-			},
-			// More values...
-		},
+		TableName: aws.String("equipment"), // Required
 	}
 	resp, err := svc.CreateTable(params)
 
